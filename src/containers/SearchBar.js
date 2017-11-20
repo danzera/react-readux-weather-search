@@ -6,15 +6,26 @@ import { connect } from 'react-redux';
 import { weatherSearch } from '../actions/';
 
 class SearchBar extends Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			city: ''
+		};
+	}
+
 	render() {
 		return (
 			<form className="input-group">
-				<input placeholder="Search for a city" />
+				<input
+					value={this.state.city}
+					onChange={event => {this.setState({ city: event.target.value }); console.log('onChange event', this.state.city)}}
+					placeholder="Search for a city" />
 				<span className="input-group-btn">
 					<button className="btn btn-secondary" type="submit">Search</button>
 				</span>
 			</form>
-		)
+		);
 	}
 }
 
