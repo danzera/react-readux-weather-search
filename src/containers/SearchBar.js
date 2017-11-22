@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 // import action creator
-import { weatherSearch } from '../actions/';
+import { fetchWeather } from '../actions/';
 
 class SearchBar extends Component {
 	/**
@@ -82,7 +82,7 @@ class SearchBar extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ weatherSearch }, dispatch);
+	return bindActionCreators({ fetchWeather }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(SearchBar);

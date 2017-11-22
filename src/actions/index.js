@@ -6,9 +6,9 @@ const ROOT_URL = `api.openweathermap.org/data/2.5/forecast?appid=${API_KEY}`;
 // introduces the possibility for uncaught action type mismatches between action creators and reducers
 // when we directly define the action type as a string in both the action creator and the reducer
 // this way we can import the action type variable into our reducer and know that it is referencing the same string as our action creator
-export const WEATHER_SEARCH = 'WEATHER_SEARCH';
+export const FETCH_WEATHER = 'FETCH_WEATHER';
 
-export function weatherSearch(city) {
+export function fetchWeather(city) {
 	// forming the url for our API request using the base url and 
 	// NOTE: "us" at the end of the query string is the country code, just making it static for this application
 	// -- would need another variable if we wanted to be able to search for weather in other countries
@@ -18,7 +18,7 @@ export function weatherSearch(city) {
 	// action to be sent from our action creator to our reducers
 	return {
 		// again, factoring out our action type to a variable to keep it consistent between our action creators and reducers
-		type: WEATHER_SEARCH,
+		type: FETCH_WEATHER,
 		payload: request
 	};
 }
