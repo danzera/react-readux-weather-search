@@ -1,3 +1,5 @@
+// axios is an http client for making AJAX requests
+// https://github.com/axios/axios
 import axios from 'axios';
 const API_KEY = 'c844d2ab8676e10f2d45e46f217266cd';
 // root url for our weather API search
@@ -13,12 +15,15 @@ export function fetchWeather(city) {
 	// NOTE: "us" at the end of the query string is the country code, just making it static for this application
 	// -- would need another variable if we wanted to be able to search for weather in other countries
 	const url = `${ROOT_URL}&q=${city},us`;
+	// make request to the openweathermap API
+	// axios.get() returns a promise
 	const request = axios.get(url);
 
 	// action to be sent from our action creator to our reducers
 	return {
 		// again, factoring out our action type to a variable to keep it consistent between our action creators and reducers
 		type: FETCH_WEATHER,
+		// pass the API request as the payload of our action
 		payload: request
 	};
 }
