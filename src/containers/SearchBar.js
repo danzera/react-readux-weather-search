@@ -31,6 +31,8 @@ class SearchBar extends Component {
 		// and bind the function to "this", which is our SearchBar instance
 		// then replace 'onInputChange' with this new, bound instance of the original function
 		this.onInputChange = this.onInputChange.bind(this);
+		// need to do the same for onFormSubmit
+		this.onFormSubmit = this.onFormSubmit.bind(this);
 	}
 
 	/**
@@ -58,6 +60,10 @@ class SearchBar extends Component {
 		// - would need to setup manual event handlers for both of these if not using a <form> element
 		// is good to use <form> elements for handling user input, generally, for this reason
 		event.preventDefault();
+		// send the current value of our input to the fetchWeather action creator
+		this.props.fetchWeather(this.state.city);
+		// clear out the search term as a convenience to the user
+		this.setState({ city: '' });
 	}
 
 	// value={this.state.city} in our <input /> below makes it a "controlled field"
@@ -82,7 +88,11 @@ class SearchBar extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
+	// give our component access to our fetchWeather action creator via bindActionCreators()
 	return bindActionCreators({ fetchWeather }, dispatch);
 }
 
+// 1st parameter of the connect function corresponds to mapStateToProps
+// this component needs to utilize an action creator
+// but does not need to know about the Redux state, so we pass null as the 1st argument to the connect function
 export default connect(null, mapDispatchToProps)(SearchBar);
