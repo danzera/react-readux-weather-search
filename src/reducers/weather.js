@@ -8,17 +8,15 @@ import { FETCH_WEATHER } from '../actions';
  * @param {Object} action - received from action creators
  * @param {string} action.type - type of action received from the action creators, used to determine how our reducer should handle the action
  * @param {Object} action.payload - variable value, and possibly type, depend on the action received
- * @returns {Object} - 
+ * @returns {Object} - either the original state or the data returned from the open weather API
  */
 export default function(state = null, action) {
 	console.log('action received', action);
-	console.log('payload', action.payload);
-	console.log('payload type', typeof action.payload);
 	switch (action.type) {
 		case FETCH_WEATHER:
 			if (action.error) {
 				console.log('error fetching weather', action.payload);
-				alert('BAD SEARCH, please try again!');
+				alert('BAD SEARCH! Please try again!');
 				return state;
 			} else {
 				console.log('weather fetched', action.payload);

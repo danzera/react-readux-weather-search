@@ -24,6 +24,7 @@ export function fetchWeather(city) {
 	// make request to the openweathermap API
 	// axios.get() returns a promise
 	const request = axios.get(url);
+	console.log('weather being fetched...', request);
 
 	// action to be sent from our action creator to our reducers
 	return {
