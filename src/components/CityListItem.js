@@ -5,7 +5,7 @@ export default props => {
 
 	return (
 		<div>
-			CityListItem
+			{props.cityData.city.name}
 		</div>
 	);
 }

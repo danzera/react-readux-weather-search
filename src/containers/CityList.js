@@ -5,7 +5,9 @@ import CityListItem from '../components/CityListItem';
 class CityList extends Component {
 	renderList() {
 		return this.props.weatherData.map((cityData, index, weatherData) => {
-			return <CityListItem />;
+			return <CityListItem
+								key={cityData.city.name}
+								cityData={cityData} />;
 		});
 	}
 
