@@ -3,12 +3,20 @@ import { connect } from 'react-redux';
 import CityListItem from '../components/CityListItem';
 
 class CityList extends Component {
+	renderList() {
+		return this.props.weatherData.map((cityData, index, weatherData) => {
+			return <CityListItem />;
+		});
+	}
+
 	render() {
 		console.log('this.props', this.props);
+		const cityListItems = this.renderList();
+		console.log('cityListItems', cityListItems);
+
 		return (
 			<div>
-				CityList
-				<CityListItem />
+				{cityListItems}
 			</div>
 		);
 	}
