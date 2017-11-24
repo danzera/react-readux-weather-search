@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import CityListItem from '../components/CityListItem';
 
 class CityList extends Component {
 	render() {
@@ -7,6 +8,7 @@ class CityList extends Component {
 		return (
 			<div>
 				CityList
+				<CityListItem />
 			</div>
 		);
 	}
