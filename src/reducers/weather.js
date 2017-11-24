@@ -16,8 +16,14 @@ export default function(state = null, action) {
 	console.log('payload type', typeof action.payload);
 	switch (action.type) {
 		case FETCH_WEATHER:
-			console.log('weather fetched', action.payload);
-			return action.payload.data;
+			if (action.error) {
+				console.log('error fetching weather', action.payload);
+				alert('BAD SEARCH, please try again!');
+				return state;
+			} else {
+				console.log('weather fetched', action.payload);
+				return action.payload.data;
+			}
 		default:
 			return state;
 	}
