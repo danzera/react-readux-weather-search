@@ -17,9 +17,16 @@ class CityList extends Component {
 		console.log('cityListItems', cityListItems);
 
 		return (
-			<div>
-				{cityListItems}
-			</div>
+			<table className="table table-hover">
+				<thead>
+					<tr>
+						<th>City</th>
+					</tr>
+				</thead>
+				<tbody>
+					{cityListItems}
+				</tbody>
+			</table>
 		);
 	}
 };
