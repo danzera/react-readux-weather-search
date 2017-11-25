@@ -21,6 +21,9 @@ class CityList extends Component {
 				<thead>
 					<tr>
 						<th>City</th>
+						<th>Temperature</th>
+						<th>Pressure</th>
+						<th>Humidity</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -33,11 +36,13 @@ class CityList extends Component {
 
 /**
  * reminder, this function is used, along with the connect function, to give our component access to the application state from Redux
- * @param {Object} state - object corresponding to the current appliction state from Redux
+ * can utilize ES6 destructuring to pull the variable we want out of the object corresponding to the current appliction state from Redux
+ * @param {Array} weatherData - running list of cities' data returned from the openweather API
  * @returns {Object} - contains key-value pairs of application state data that we want to make available to our component as this.props.keyName
+ * @returns {Object.weatherData} - running list of cities' data returned from the openweather API
  */
-function mapStateToProps(state) {
-	return { weatherData: state.weatherData };
+function mapStateToProps({ weatherData }) {
+	return { weatherData };
 }
 
 export default connect(mapStateToProps)(CityList);
