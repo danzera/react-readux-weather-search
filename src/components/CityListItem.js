@@ -1,4 +1,5 @@
 import React from 'react';
+import Chart from './Chart';
 import { Sparklines, SparklinesLine } from 'react-sparklines';
 
 export default ({ cityData }) => {
@@ -27,6 +28,7 @@ export default ({ cityData }) => {
 				<Sparklines data={humidityArray} height={120} width={180}>
 					<SparklinesLine color="red" />
 				</Sparklines>
+				<Chart />
 			</td>
 		</tr>
 	);
