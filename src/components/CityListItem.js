@@ -13,9 +13,21 @@ export default ({ cityData }) => {
 	return (
 		<tr>
 			<td>{cityData.city.name}</td>
-			<td><Sparklines data={temperatureArray} height={40}><SparklinesLine color="blue" /></Sparklines></td>
-			<td><Sparklines data={pressureArray} height={40}><SparklinesLine color="green" /></Sparklines></td>
-			<td><Sparklines data={humidityArray} height={40}><SparklinesLine color="red" /></Sparklines></td>
+			<td>
+				<Sparklines data={temperatureArray} height={120} width={180}>
+					<SparklinesLine color="blue" />
+				</Sparklines>
+			</td>
+			<td>
+				<Sparklines data={pressureArray} height={120} width={180}>
+					<SparklinesLine color="green" />
+				</Sparklines>
+			</td>
+			<td>
+				<Sparklines data={humidityArray} height={120} width={180}>
+					<SparklinesLine color="red" />
+				</Sparklines>
+			</td>
 		</tr>
 	);
 }
