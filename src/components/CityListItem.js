@@ -1,23 +1,31 @@
 import React from 'react';
-import Sparklines from 'react-sparklines';
+import { Sparklines, SparklinesLine } from 'react-sparklines';
 
 export default ({ cityData }) => {
+	const temperatureArray = getArray(cityData.list, 'temp');
+	const pressureArray = getArray(cityData.list, 'pressure');
+	const humidityArray = getArray(cityData.list, 'humidity');
 	console.log('cityData received', cityData);
-	const temperatureArray = getTemperatureArray(cityData);
 	console.log('temp array', temperatureArray);
+	console.log('pressure array', pressureArray);
+	console.log('humidity array', humidityArray);
 
 	return (
 		<tr>
 			<td>{cityData.city.name}</td>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td><Sparklines data={temperatureArray} height={40}><SparklinesLine color="blue" /></Sparklines></td>
+			<td><Sparklines data={pressureArray} height={40}><SparklinesLine color="green" /></Sparklines></td>
+			<td><Sparklines data={humidityArray} height={40}><SparklinesLine color="red" /></Sparklines></td>
 		</tr>
 	);
 }
 
-function getTemperatureArray(cityData) {
-	return cityData.list.map((dataSnapshot, index, cityData) => {
-		return (dataSnapshot.main.temp * 9 / 5) - 459.67;
+function getArray(list, dataType) {
+	return list.map((dataSnapshot, index, list) => {
+		if (dataType === 'temp') {
+			return Math.round((dataSnapshot.main[dataType] * 9 / 5) - 459.67);
+		} else {
+			return dataSnapshot.main[dataType];
+		}	
 	});
 }
