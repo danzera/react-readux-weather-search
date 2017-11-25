@@ -1,6 +1,6 @@
 import React from 'react';
 import Chart from './Chart';
-import { Sparklines, SparklinesLine } from 'react-sparklines';
+
 
 export default ({ cityData }) => {
 	const temperatureArray = getArray(cityData.list, 'temp');
@@ -14,22 +14,9 @@ export default ({ cityData }) => {
 	return (
 		<tr>
 			<td>{cityData.city.name}</td>
-			<td>
-				<Sparklines data={temperatureArray} height={120} width={180}>
-					<SparklinesLine color="blue" />
-				</Sparklines>
-			</td>
-			<td>
-				<Sparklines data={pressureArray} height={120} width={180}>
-					<SparklinesLine color="green" />
-				</Sparklines>
-			</td>
-			<td>
-				<Sparklines data={humidityArray} height={120} width={180}>
-					<SparklinesLine color="red" />
-				</Sparklines>
-				<Chart />
-			</td>
+			<td><Chart data={temperatureArray} color="blue" /></td>
+			<td><Chart data={pressureArray} color="green" /></td>
+			<td><Chart data={humidityArray} color="red" /></td>
 		</tr>
 	);
 }
