@@ -13,10 +13,10 @@ export default ({ cityData }) => {
 
 	return (
 		<tr>
-			<td>{cityData.city.name}</td>
-			<td><Chart data={temperatureArray} color="blue" /></td>
-			<td><Chart data={pressureArray} color="green" /></td>
-			<td><Chart data={humidityArray} color="red" /></td>
+			<td className="td-chart">{cityData.city.name}</td>
+			<td className="td-chart"><Chart data={temperatureArray} color="blue" /></td>
+			<td className="td-chart"><Chart data={pressureArray} color="green" /></td>
+			<td className="td-chart"><Chart data={humidityArray} color="red" /></td>
 		</tr>
 	);
 }
