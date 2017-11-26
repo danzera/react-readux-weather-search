@@ -1,4 +1,5 @@
 import React from 'react';
+import GoogleMap from './GoogleMap';
 import Chart from './Chart';
 
 
@@ -13,7 +14,9 @@ export default ({ cityData }) => {
 
 	return (
 		<tr>
-			<td>{cityData.city.name}</td>
+			<td>
+				<GoogleMap cityData={cityData}/>
+			</td>
 			<td><Chart data={temperatureArray} units="F" color="blue" /></td>
 			<td><Chart data={pressureArray} units="hPa" color="green" /></td>
 			<td><Chart data={humidityArray} units="%" color="red" /></td>
