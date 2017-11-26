@@ -11,12 +11,13 @@ export default ({ cityData }) => {
 	const temperatureArray = cityData.list.map(dataSnapshot => Math.round((dataSnapshot.main.temp * 9 / 5) - 459.67));
 	const pressureArray = cityData.list.map(dataSnapshot => dataSnapshot.main.pressure);
 	const humidityArray = cityData.list.map(dataSnapshot => dataSnapshot.main.humidity);
+	// can use ES6 destructuring to pull variables out of object
+	// saves us from having to write two separate variable declarations
+	const { lat, lon } = cityData.city.coord;
 
 	return (
 		<tr>
-			<td>
-				<GoogleMap cityData={cityData}/>
-			</td>
+			<td><GoogleMap lat={lat} lng={lon} /></td>
 			<td><Chart data={temperatureArray} units="F" color="blue" /></td>
 			<td><Chart data={pressureArray} units="hPa" color="green" /></td>
 			<td><Chart data={humidityArray} units="%" color="red" /></td>
